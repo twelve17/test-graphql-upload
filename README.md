@@ -49,3 +49,8 @@ This will run a mutation that includes uploading of the two files.
 ```
 ./bin/upload-files.sh
 ```
+
+
+# Acknowledgments
+
+GraphQL server based on documentation from https://www.apollographql.com/docs/apollo-server/getting-started/
