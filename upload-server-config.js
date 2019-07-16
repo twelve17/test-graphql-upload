@@ -1,4 +1,6 @@
 const PORT = 4001;
-const ROUTE = 'upload';
+const ROUTE = '/upload';
 
-module.exports = { PORT, ROUTE };
+const url = () => `http://localhost:${PORT}${ROUTE}`;
+
+module.exports = { url, PORT, ROUTE };

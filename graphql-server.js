@@ -30,15 +30,13 @@ const start = () => {
     }
   `);
 
+  const url = uploadServerConfig.url();
+
   // Root resolver
   const resolvers = {
     Mutation: {
-      uploadFiles: async (obj, args) => {
-        const { file1, file2 } = args;
-        const url = `http://localhost:${uploadServerConfig.PORT}/${
-          uploadServerConfig.ROUTE
-        }`;
-        logger.info('uploadFiles mutation start (upload server url: %s)', url); //. obj: %o, args: %o', obj, args);
+      uploadFiles: async (_, { file1, file2 }) => {
+        logger.info('uploadFiles mutation start (upload server url: %s)', url);
         try {
           const promises = Promise.all([
             uploadGraphqlFile({
@@ -58,7 +56,7 @@ const start = () => {
           const result = await promises;
           logger.info('uploadFiles await promises end');
 
-          logger.info('uploadFiles mutation end', result);
+          logger.info('uploadFiles mutation end: %o', result);
           return true;
         } catch (error) {
           logger.error('error with mutation: %o', error);

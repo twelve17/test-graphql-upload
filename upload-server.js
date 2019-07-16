@@ -19,11 +19,11 @@ const serverTimeout = process.env.UPLOAD_SERVER_TIMEOUT
 const createUploadApp = service => {
   const app = express();
   app
-    .use(`/${ROUTE}`, (req, res, next) => {
+    .use(ROUTE, (req, res, next) => {
       logger.info(
         'new %s request to %s, transfer-encoding: %s',
         req.method,
-        `/${ROUTE}`,
+        ROUTE,
         req.headers['transfer-encoding']
       );
 
