@@ -1,0 +1,24 @@
+{
+  "name": "test-upload",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently \"node ./graphql-server.js\" \"node ./upload-server.js\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-server": "^2.6.9",
+    "concurrently": "^4.1.1",
+    "express": "^4.17.1",
+    "express-graphql": "^0.9.0",
+    "form-data": "^2.5.0",
+    "formidable": "^1.2.1",
+    "graphql": "^14.4.2",
+    "request": "^2.88.0",
+    "request-promise-native": "^1.0.7",
+    "winston": "^3.2.1"
+  }
+}
