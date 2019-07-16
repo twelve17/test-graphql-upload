@@ -4,10 +4,10 @@ A small project to explore the [graphql-upload](https://github.com/jaydenseric/g
 
 It runs two servers:
 
-1. An Apollo GraphQL server configured with a single mutation that accepts two `Upload` types, named `file1`, and `file2`.  
-2. An express server configured with a single route, `POST /upload`, that accepts a multipart form file upload.
+1. An [Apollo GraphQL server](https://github.com/apollographql/apollo-server) configured with a single mutation that accepts two `Upload` types, named `file1`, and `file2`.  
+2. An [express](http://expressjs.com/) server configured with a single route, `POST /upload`, that accepts a multipart form file upload (via [formidable](https://github.com/felixge/node-formidable).
 
-The mutation in #1 uploads each file, via a `request-promise-native` client, to #2.
+The mutation in #1 uploads each file, via a [`request-promise-native` client](https://github.com/request/request-promise-native), to #2.
 
 ## Usage
 
