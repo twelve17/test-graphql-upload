@@ -12,8 +12,6 @@ const uploadGraphqlFile = async ({ id, file, logger, url }) => {
     filename,
     contentType: mimetype
   });
-  /*
-   */
 
   /*
    * The 'request' library supports passing in form data as a hash. However,
@@ -30,16 +28,6 @@ const uploadGraphqlFile = async ({ id, file, logger, url }) => {
   const reqPromise = request({
     method: 'POST',
     url,
-    /*
-    formData: {
-      file: {
-        value: createReadStream(),
-        options: {
-          filename
-        }
-      }
-    }
-    */
     headers: form.getHeaders()
   });
   form.pipe(reqPromise);

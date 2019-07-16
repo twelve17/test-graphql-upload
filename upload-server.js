@@ -11,6 +11,11 @@ const { uploadGraphqlFile } = require('./upload-client');
 const { PORT, ROUTE } = require('./upload-server-config');
 const logger = loggerFactory('upload-server');
 
+// https://nodejs.org/api/http.html#http_server_settimeout_msecs_callback
+const serverTimeout = process.env.UPLOAD_SERVER_TIMEOUT
+  ? parseInt(process.env.UPLOAD_SERVER_TIMEOUT, 10)
+  : 120000;
+
 const createUploadApp = service => {
   const app = express();
   app
@@ -68,32 +73,6 @@ const createUploadApp = service => {
         });
 
       form.parse(req);
-
-      /*
-      (req, (err, fields, files) => {
-      if (err) {
-        logger.error('upload error:', err);
-        throw err;
-      }
-      /*
-      logger.info('upload files', files);
-      files.map(file => {
-        logger.info(file);
-      });
-    });
-
-    form.parse(req, function(err, fields, files) {
-      res.writeHead(200, { 'content-type': 'text/plain' });
-      res.write('received upload:\n\n');
-      res.end(
-        JSON.stringify({
-          result: util.inspect({ fields: fields, files: files })
-        })
-      );
-    });
-      */
-
-      //form.parse(req);
     })
     .use((err, req, res, next) => {
       res.status(500).send(err);
@@ -103,7 +82,7 @@ const createUploadApp = service => {
 };
 
 const server = http.createServer(createUploadApp());
-//server.setTimeout(100);
+server.setTimeout(serverTimeout);
 server.listen({ port: PORT }, () => {
-  logger.info('📂  Server ready at %d', PORT);
+  logger.info('📂  Server ready at %d (timeout: %d)', PORT, serverTimeout);
 });
