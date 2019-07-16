@@ -1,8 +1,10 @@
 # test-graphql-upload
 
-A small project to explore the [graphql-upload](https://github.com/jaydenseric/graphql-upload) mechanics in action.
+A small project to explore the [graphql-upload](https://github.com/jaydenseric/graphql-upload) mechanics in action.  
 
-It runs two servers:
+The use case:  a client (say an app) runs a GraphQL mutation with some image attachments. Those attachments are then uploaded to a file store of some sort (e.g. S3, some other HTTP server, etc).
+
+The project consists of two servers:
 
 1. An [Apollo GraphQL server](https://github.com/apollographql/apollo-server) configured with a single mutation that accepts two `Upload` types, named `file1`, and `file2`.
 2. An [express](http://expressjs.com/) server configured with a single route, `POST /upload`, that accepts a multipart form file upload (via [formidable](https://github.com/felixge/node-formidable)).
