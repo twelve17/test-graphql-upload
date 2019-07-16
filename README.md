@@ -2,7 +2,7 @@
 
 A small project to explore the [graphql-upload](https://github.com/jaydenseric/graphql-upload) mechanics in action.  
 
-The use case:  a client (say an app) runs a GraphQL mutation with some image attachments. Those attachments are then uploaded to a file store of some sort (e.g. S3, some other HTTP server, etc).
+The use case:  a client (say an app) calls a GraphQL mutation on a GraphQL server, with some image attachments. On the GraphQL server-side, those attachments are then uploaded to a file store of some sort (e.g. S3, some other HTTP server, etc).
 
 The project consists of two servers:
 
