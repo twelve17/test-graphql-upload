@@ -1,3 +1,14 @@
+# test-graphql-upload
+
+A small project to explore the [graphql-upload](https://github.com/jaydenseric/graphql-upload) mechanics in action.
+
+It runs two servers:
+
+1. An Apollo GraphQL server configured with a single mutation that accepts two `Upload` types, named `file1`, and `file2`.  
+2. An express server configured with a single route, `POST /upload`, that accepts a multipart form file upload.
+
+The mutation in #1 uploads each file, via a `request-promise-native` client, to #2.
+
 ## Usage
 
 ### Install Deps
